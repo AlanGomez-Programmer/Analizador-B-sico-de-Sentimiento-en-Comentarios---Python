@@ -1,8 +1,5 @@
-palabras = {
-    "Positivas": ["ama", "gusta", "genial", "excelente", "bueno"],
-    "Negativas": ["odio", "malo", "terrible", "decepcionado", "decepcionada", "decepcionante", "pésimo"]
-}
-
+palabras_positivas = ["ama", "gusta", "genial", "excelente", "bueno", "encanto"]
+palabras_negativas = ["odio", "malo", "terrible", "decepcionado", "decepcionada", "decepcionante", "pésimo", "no"]
 
 def validar_palabras():
 
@@ -20,17 +17,26 @@ def analizador():
         comentario = validar_palabras()
 
         contador_p = 0
-        contador_n = 0
-
-        print(comentario)
-
+        contador_n = 0        
         cantidad_palabras = len(comentario)
 
-        print(cantidad_palabras)
-
         for i in range(cantidad_palabras):
-            for llave, palabra in palabras.items():
-                print(llave, palabra)
+            palabra_por_palabra = comentario[i]
+            if palabra_por_palabra in palabras_positivas:
+                contador_p += 1
+
+            if palabra_por_palabra in palabras_negativas:
+                contador_n += 1
+            
+        
+        if contador_p > contador_n:
+            print("Comentario positivo")
+        elif contador_n > contador_p:
+            print("Comentario negativo")
+        else:
+            print("Comentario Neutro")
+            
+               
 
        
 
